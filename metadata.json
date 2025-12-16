@@ -1,0 +1,5 @@
+{
+  "name": "ai-app03",
+  "description": "A web application that visualizes a sequential, collaborative workflow of AI agents to generate production-ready applications, from planning to deployment.",
+  "requestFramePermissions": []
+}

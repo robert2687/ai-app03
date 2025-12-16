@@ -1,0 +1,82 @@
+
+import { Agent, AgentStatus } from './types';
+
+export const AGENTS: Agent[] = [
+  {
+    id: 'researcher',
+    name: 'Researcher Agent',
+    role: 'Gathers real-time information and market trends.',
+    description: 'The Researcher Agent uses Google Search to find up-to-date information, relevant APIs, and competitor analysis to ground the application in reality.',
+    status: AgentStatus.PENDING,
+    model: 'gemini-2.5-flash', // Use Flash for search
+    tools: ['googleSearch'],
+    systemInstruction: 'You are a technical researcher. Search for recent trends, available APIs, and best practices relevant to the user\'s request. Provide a summary of key findings that should influence the application design.',
+    input: {
+        title: "Project Request",
+        language: 'text',
+        content: `Create a "FilmLog" web application. This application will allow users to track movies they have watched, create public and private watchlists, and write reviews.`
+    },
+    output: null,
+    processingTime: 2000,
+  },
+  {
+    id: 'planner',
+    name: 'Planner Agent',
+    role: 'Defines purpose, features, user flows, and tech stack.',
+    description: 'As the lead orchestrator, the Planner Agent internalizes the user request and research to create a comprehensive requirements document.',
+    status: AgentStatus.PENDING,
+    model: 'gemini-2.5-flash',
+    systemInstruction: 'You are a Senior Product Manager. Based on the user request and research, create a detailed Requirements Document (PRD). Include Project Overview, Core Features, and a recommended Tech Stack. Output in Markdown.',
+    input: null,
+    output: null,
+    processingTime: 3000,
+  },
+  {
+    id: 'architect',
+    name: 'Architect Agent',
+    role: 'Designs system architecture, database schema, and security model.',
+    description: 'The Architect Agent designs a robust and scalable system architecture, defining the data model.',
+    status: AgentStatus.PENDING,
+    model: 'gemini-2.5-flash',
+    systemInstruction: 'You are a Software Architect. Based on the PRD, design the Data Schema (e.g., GraphQL types or SQL tables). Focus on the core entities. Output in GraphQL or SQL format inside a code block.',
+    input: null,
+    output: null,
+    processingTime: 3000,
+  },
+  {
+    id: 'coder',
+    name: 'Coder Agent',
+    role: 'Implements modular, production-grade code.',
+    description: 'The Coder Agent translates the architectural blueprints into functional code, focusing on a critical component.',
+    status: AgentStatus.PENDING,
+    model: 'gemini-2.5-flash',
+    systemInstruction: 'You are a Senior React Developer. Based on the Data Schema, write a production-ready React component for the main entity (e.g., a Card component or Detail view). Use Tailwind CSS. Output TSX code.',
+    input: null,
+    output: null,
+    processingTime: 4000,
+  },
+  {
+    id: 'reviewer',
+    name: 'Reviewer Agent',
+    role: 'Audits code for scalability, security, and best practices.',
+    description: 'The Reviewer Agent performs a comprehensive audit of the generated code, providing constructive feedback.',
+    status: AgentStatus.PENDING,
+    model: 'gemini-2.5-flash',
+    systemInstruction: 'You are a Tech Lead. Review the generated code for best practices, accessibility, and potential bugs. Provide a summary of the review and specific suggestions. Output in Markdown.',
+    input: null,
+    output: null,
+    processingTime: 3000,
+  },
+  {
+    id: 'deployer',
+    name: 'Deployer Agent',
+    role: 'Provides deployment instructions and CI/CD setup.',
+    description: 'The Deployer Agent generates the necessary configurations for deployment.',
+    status: AgentStatus.PENDING,
+    model: 'gemini-2.5-flash',
+    systemInstruction: 'You are a DevOps Engineer. Create a CI/CD configuration file (e.g., GitHub Actions yaml) to deploy this application. Output YAML code.',
+    input: null,
+    output: null,
+    processingTime: 2000,
+  }
+];
